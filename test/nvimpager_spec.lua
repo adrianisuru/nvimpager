@@ -165,9 +165,8 @@ describe("cat mode", function()
   end)
 
   it("explicit - as file argument means stdin", function()
-    local output = run([[sh -c "echo foo | ./nvimpager -c ]] ..
-			 "--cmd 'set background=light' " ..
-			 [[- test/fixtures/makefile"]])
+    local output = run([[sh -c "echo foo | ./nvimpager -c ]]
+		.. [[- test/fixtures/makefile --cmd 'set background=light'"]])
     local expected = "\27[0mfoo\27[0m\n"
 		  .. read("test/fixtures/makefile.ansi")
     assert.equal(expected, output)
