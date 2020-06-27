@@ -172,9 +172,9 @@ describe("cat mode", function()
     assert.equal(expected, output)
   end)
 
-  pending("prefers file arguments over stdin", function()
-    local output = run([[sh -c "echo foo | ./nvimpager -c test/fixtures/makefile"]])
-    assert.equal(read("test/fixtures/makefile"), output)
+  it("prefers file arguments over stdin", function()
+    local output = run([[sh -c "echo foo | ./nvimpager -c test/fixtures/makefile --cmd 'set background=light'"]])
+    assert.equal(read("test/fixtures/makefile.ansi"), output)
   end)
 
   describe("with modeline", function()
